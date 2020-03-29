@@ -59,7 +59,9 @@ class MainActivity : AppCompatActivity(), SaveChartCallback {
     }
 
     override fun tryToSaveChart() {
-        ViewSaver.saveViesAsImage(activity_main_pointsChart, this)
+        if (activity_main_pointsChart.width > 0 && activity_main_pointsChart.height > 0) {
+            ViewSaver.saveViesAsImage(activity_main_pointsChart, this)
+        }
     }
 
     private fun initViews() {
