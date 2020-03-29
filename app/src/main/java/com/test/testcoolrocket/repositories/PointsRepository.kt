@@ -12,7 +12,7 @@ class PointsRepository(service: PointsService) {
     val result = MutableLiveData<ResultResponse>()
 
     init {
-        service.getPoints(count = 50)
+        service.getPoints(count = 20)
             .enqueue(object : Callback<ResultResponse> {
                 override fun onFailure(call: Call<ResultResponse>, t: Throwable) {
                     Timber.i("MainActivity onCreate onFailure ${t.localizedMessage}")
