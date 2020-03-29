@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/drawer_enter_new_points"
+            android:icon="@drawable/ic_chart_24dp"
+            android:title="@string/drawer_points_text" />
+        <item
+            android:id="@+id/drawer_save_image"
+            android:icon="@drawable/ic_save_24dp"
+            android:title="@string/drawer_save_text" />
+    </group>
+</menu>

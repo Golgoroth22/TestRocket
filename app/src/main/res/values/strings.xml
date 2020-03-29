@@ -1,3 +1,19 @@
 <resources>
+    <!-- App -->
     <string name="app_name">TestCoolRocket</string>
+
+    <!-- Activity Main -->
+    <string name="activity_main_chart_title_text">График</string>
+    <string name="activity_main_points_title_text">Координаты</string>
+    <string name="activity_main_save_text">Граффик сохранен</string>
+    <string name="activity_main_chart_labet_text">Координаты</string>
+
+    <!-- Drawer -->
+    <string name="drawer_save_text">Сохранить результат</string>
+    <string name="drawer_points_text">Получить новые координаты</string>
+
+    <!-- New Request Dialog -->
+    <string name="dialog_new_points_fragment_title_text">Введите необходимое количество точек(от 0 до 200)</string>
+    <string name="dialog_new_points_fragment_accept_button_text">Подтвердить</string>
+    <string name="dialog_new_points_fragment_dismiss_button_text">Отмена</string>
 </resources>

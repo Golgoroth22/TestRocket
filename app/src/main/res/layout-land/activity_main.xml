@@ -15,12 +15,13 @@
 
         <LinearLayout
             android:id="@+id/activity_main_points_titleLayout"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="?actionBarSize"
             android:background="@color/colorPrimary"
             android:elevation="@dimen/elevation_small"
             android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/activity_main_chart_titleLayout"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -43,10 +44,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/activity_main_pointsRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:overScrollMode="never"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/activity_main_points_titleLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_main_points_titleLayout"
             tools:itemCount="4"
@@ -54,14 +56,15 @@
 
         <LinearLayout
             android:id="@+id/activity_main_chart_titleLayout"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="?actionBarSize"
             android:background="@color/colorPrimary"
             android:elevation="@dimen/elevation_small"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_main_pointsRecycler">
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/activity_main_points_titleLayout"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:layout_width="0dp"
@@ -87,7 +90,7 @@
             android:background="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/activity_main_points_titleLayout"
             app:layout_constraintTop_toBottomOf="@+id/activity_main_chart_titleLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

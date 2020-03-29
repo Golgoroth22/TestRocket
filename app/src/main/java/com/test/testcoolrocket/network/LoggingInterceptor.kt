@@ -11,7 +11,7 @@ class LoggingInterceptor : Interceptor {
         val request = chain.request()
         val t1 = System.nanoTime()
         Timber.i("Sending request ${request.url} on ${chain.connection()} + ${request.headers}")
-        Timber.i("Sending request body${requestBodyTo(request)}")
+        Timber.i("Sending request body ${requestBodyTo(request)}")
         val response = chain.proceed(request)
         val t2 = System.nanoTime()
         Timber.i("Received response for ${response.request.url} in ${t2 - t1} + ${response.headers}")
