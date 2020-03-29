@@ -1,5 +1,6 @@
 package com.test.testcoolrocket.di.modules
 
+import android.content.Context
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.test.testcoolrocket.network.LoggingInterceptor
@@ -12,7 +13,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import toothpick.config.Module
 
-class AppModule : Module() {
+class AppModule(context: Context) : Module() {
     private val retrofit by lazy {
         Retrofit.Builder()
             .baseUrl("https://demo.bankplus.ru/mobws/json/")
@@ -27,7 +28,7 @@ class AppModule : Module() {
     }
 
     init {
-        PointsRepository(retrofit.create(PointsService::class.java)).also {
+        PointsRepository(retrofit.create(PointsService::class.java), context).also {
             bind(MainViewModelFactory::class.java).toInstance(MainViewModelFactory(it))
             bind(PointsRepository::class.java).toInstance(it)
         }

@@ -22,9 +22,9 @@ class ProjectApplication : Application() {
 
     private fun initToothpick() {
         Toothpick.setConfiguration(
-            if (BuildConfig.DEBUG) Configuration.forDevelopment().preventMultipleRootScopes()
+            if (BuildConfig.DEBUG) Configuration.forDevelopment()
             else Configuration.forProduction()
         )
-        Toothpick.openScope(Scopes.APP).installModules(AppModule())
+        Toothpick.openScope(Scopes.APP).installModules(AppModule(this))
     }
 }

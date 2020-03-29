@@ -6,9 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.test.testcoolrocket.R
+import com.test.testcoolrocket.di.Scopes
+import com.test.testcoolrocket.ui.activities.interfaces.SaveChartCallback
 import kotlinx.android.synthetic.main.drawer_layout.*
+import toothpick.Toothpick
+
 
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
+    private val saveChartCallback =
+        Toothpick.openScope(Scopes.DRAWER).getInstance(SaveChartCallback::class.java)
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -28,12 +35,13 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                     this.dismiss()
                 }
                 R.id.drawer_save_image -> {
-                    TODO()
+                    saveChartCallback.tryToSaveChart()
                     this.dismiss()
                 }
             }
             true
         }
     }
+
 
 }

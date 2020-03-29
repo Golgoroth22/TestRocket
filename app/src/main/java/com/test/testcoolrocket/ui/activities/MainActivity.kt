@@ -2,7 +2,6 @@ package com.test.testcoolrocket.ui.activities
 
 import android.graphics.Color
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -14,20 +13,21 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.test.testcoolrocket.R
 import com.test.testcoolrocket.di.Scopes
+import com.test.testcoolrocket.di.modules.DrawerModule
 import com.test.testcoolrocket.network.pojo.PointResponse
+import com.test.testcoolrocket.ui.activities.interfaces.SaveChartCallback
 import com.test.testcoolrocket.ui.adapters.PointsAdapter
 import com.test.testcoolrocket.ui.fragment.BottomNavigationDrawerFragment
 import com.test.testcoolrocket.ui.fragment.NewPointsDialogFragment
+import com.test.testcoolrocket.utils.ViewSaver
 import com.test.testcoolrocket.utils.injectViewModel
 import com.test.testcoolrocket.viewmodels.MainViewModel
 import com.test.testcoolrocket.viewmodels.factories.MainViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.*
 import toothpick.Toothpick
 import javax.inject.Inject
 
-
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SaveChartCallback {
     @Inject
     lateinit var factory: MainViewModelFactory
     private lateinit var viewModel: MainViewModel
@@ -40,14 +40,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Toothpick.inject(this, Toothpick.openScope(Scopes.APP))
         setContentView(R.layout.activity_main)
+        Toothpick.openScope(Scopes.DRAWER).installModules(DrawerModule(this))
         setSupportActionBar(activity_main_bottomBar)
         viewModel = injectViewModel(factory)
         initViews()
         initListeners()
-    }
-
-    override fun onStart() {
-        super.onStart()
         NewPointsDialogFragment().also { it.show(this.supportFragmentManager, it.tag) }
     }
 
@@ -59,6 +56,10 @@ class MainActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun tryToSaveChart() {
+        ViewSaver.saveViesAsImage(activity_main_pointsChart, this)
     }
 
     private fun initViews() {
@@ -108,7 +109,7 @@ class MainActivity : AppCompatActivity() {
         list.forEach {
             entries.add(Entry(it.x.toFloat(), it.y.toFloat()))
         }
-        val dataSet = LineDataSet(entries, "Координаты")
+        val dataSet = LineDataSet(entries, getString(R.string.activity_main_chart_labet_text))
         dataSet.color = Color.GRAY
         activity_main_pointsChart.data = LineData(dataSet)
         activity_main_pointsChart.invalidate()

@@ -4,7 +4,6 @@ import okhttp3.OkHttpClient
 import javax.net.ssl.*
 import javax.security.cert.CertificateException
 
-
 class UnsafeOkHttpClient {
     companion object {
         fun getUnsafeOkHttpClient(): OkHttpClient.Builder {
