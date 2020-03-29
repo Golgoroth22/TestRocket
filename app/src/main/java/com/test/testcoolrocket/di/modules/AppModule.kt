@@ -27,12 +27,9 @@ class AppModule : Module() {
     }
 
     init {
-        bind(MainViewModelFactory::class.java).toInstance(
-            MainViewModelFactory(
-                PointsRepository(
-                    retrofit.create(PointsService::class.java)
-                )
-            )
-        )
+        PointsRepository(retrofit.create(PointsService::class.java)).also {
+            bind(MainViewModelFactory::class.java).toInstance(MainViewModelFactory(it))
+            bind(PointsRepository::class.java).toInstance(it)
+        }
     }
 }

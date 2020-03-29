@@ -16,4 +16,12 @@
     <style name="Text.Regular.16.White">
         <item name="android:textColor">@android:color/white</item>
     </style>
+
+    <style name="Text.Bold.24">
+        <item name="android:textSize">26sp</item>
+    </style>
+
+    <style name="Text.Bold.24.White">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>

@@ -22,11 +22,16 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
         drawerView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.drawer_enter_new_points -> {
-
+                    NewPointsDialogFragment().also {
+                        it.show(
+                            activity!!.supportFragmentManager,
+                            "missiles"
+                        )
+                    }
                     this.dismiss()
                 }
                 R.id.drawer_save_image -> {
-
+                    TODO()
                     this.dismiss()
                 }
             }

@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/darker_gray"
-    android:paddingTop="@dimen/spacing_extra_tiny"
-    android:paddingLeft="@dimen/spacing_extra_tiny">
+    android:padding="@dimen/spacing_extra_tiny">
 
     <TextView
         android:id="@+id/item_point_titleText"
