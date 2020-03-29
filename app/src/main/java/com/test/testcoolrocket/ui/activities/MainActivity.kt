@@ -1,7 +1,8 @@
-package com.test.testcoolrocket.ui
+package com.test.testcoolrocket.ui.activities
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -14,9 +15,11 @@ import com.test.testcoolrocket.R
 import com.test.testcoolrocket.di.Scopes
 import com.test.testcoolrocket.network.pojo.PointResponse
 import com.test.testcoolrocket.ui.adapters.PointsAdapter
+import com.test.testcoolrocket.ui.fragment.BottomNavigationDrawerFragment
 import com.test.testcoolrocket.utils.injectViewModel
 import com.test.testcoolrocket.viewmodels.MainViewModel
 import com.test.testcoolrocket.viewmodels.factories.MainViewModelFactory
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.*
 import toothpick.Toothpick
 import javax.inject.Inject
@@ -35,9 +38,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Toothpick.inject(this, Toothpick.openScope(Scopes.APP))
         setContentView(R.layout.activity_main)
+        setSupportActionBar(activity_main_bottomBar)
         viewModel = injectViewModel(factory)
         initViews()
         initListeners()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                val bottomNavDrawerFragment = BottomNavigationDrawerFragment()
+                bottomNavDrawerFragment.show(supportFragmentManager, bottomNavDrawerFragment.tag)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+
     }
 
     private fun initViews() {

@@ -5,4 +5,6 @@
     <!-- Activity Main -->
     <string name="activity_main_chart_title_text">График</string>
     <string name="activity_main_points_title_text">Координаты</string>
+    <string name="drawer_save_text">Сохранить результат</string>
+    <string name="drawer_points_text">Получить новые координаты</string>
 </resources>
