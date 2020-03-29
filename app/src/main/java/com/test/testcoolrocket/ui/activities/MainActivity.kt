@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(), SaveChartCallback {
         viewModel = injectViewModel(factory)
         initViews()
         initListeners()
-        NewPointsDialogFragment().also { it.show(this.supportFragmentManager, it.tag) }
+        showStartDialog()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -61,6 +61,13 @@ class MainActivity : AppCompatActivity(), SaveChartCallback {
     override fun tryToSaveChart() {
         if (activity_main_pointsChart.width > 0 && activity_main_pointsChart.height > 0) {
             ViewSaver.saveViesAsImage(activity_main_pointsChart, this)
+        }
+    }
+
+    private fun showStartDialog() {
+        if (viewModel.isThisFirstStart) {
+            NewPointsDialogFragment().also { it.show(this.supportFragmentManager, it.tag) }
+            viewModel.isThisFirstStart = false
         }
     }
 
