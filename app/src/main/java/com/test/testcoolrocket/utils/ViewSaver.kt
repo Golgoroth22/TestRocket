@@ -50,7 +50,7 @@ class ViewSaver {
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out)
                 out.flush()
                 out.close()
-                context.getString(R.string.activity_main_save_text).also {
+                "${context.getString(R.string.activity_main_save_text)}\n$path".also {
                     context.toast(it)
                     Timber.i(it)
                 }
