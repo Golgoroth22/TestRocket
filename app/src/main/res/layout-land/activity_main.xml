@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?actionBarSize"
+        android:animateLayoutChanges="true"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:id="@+id/activity_main_points_titleLayout"
+            android:layout_width="0dp"
+            android:layout_height="?actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="@dimen/elevation_small"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/activity_main_chart_titleLayout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/spacing_medium"
+                android:text="@string/activity_main_points_title_text"
+                android:textAppearance="@style/Text.Regular.16.White" />
+
+            <ImageButton
+                android:id="@+id/activity_main_points_hideButton"
+                android:layout_width="?actionBarSize"
+                android:layout_height="?actionBarSize"
+                android:background="?selectableItemBackground"
+                android:src="@drawable/ic_arrow_drop_up_24dp" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/activity_main_pointsRecycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:overScrollMode="never"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/activity_main_points_titleLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_main_points_titleLayout"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_point_layout" />
+
+        <LinearLayout
+            android:id="@+id/activity_main_chart_titleLayout"
+            android:layout_width="0dp"
+            android:layout_height="?actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="@dimen/elevation_small"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/activity_main_points_titleLayout"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/spacing_medium"
+                android:text="@string/activity_main_chart_title_text"
+                android:textAppearance="@style/Text.Regular.16.White" />
+
+            <ImageButton
+                android:id="@+id/activity_main_chart_hideButton"
+                android:layout_width="?actionBarSize"
+                android:layout_height="?actionBarSize"
+                android:background="?selectableItemBackground"
+                android:src="@drawable/ic_arrow_drop_up_24dp" />
+        </LinearLayout>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/activity_main_pointsChart"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/activity_main_points_titleLayout"
+            app:layout_constraintTop_toBottomOf="@+id/activity_main_chart_titleLayout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/activity_main_bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:navigationIcon="@drawable/ic_menu_24dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
