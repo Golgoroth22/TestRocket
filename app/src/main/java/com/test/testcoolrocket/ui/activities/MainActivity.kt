@@ -2,6 +2,7 @@ package com.test.testcoolrocket.ui.activities
 
 import android.graphics.Color
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ import com.test.testcoolrocket.di.Scopes
 import com.test.testcoolrocket.network.pojo.PointResponse
 import com.test.testcoolrocket.ui.adapters.PointsAdapter
 import com.test.testcoolrocket.ui.fragment.BottomNavigationDrawerFragment
+import com.test.testcoolrocket.ui.fragment.NewPointsDialogFragment
 import com.test.testcoolrocket.utils.injectViewModel
 import com.test.testcoolrocket.viewmodels.MainViewModel
 import com.test.testcoolrocket.viewmodels.factories.MainViewModelFactory
@@ -44,11 +46,15 @@ class MainActivity : AppCompatActivity() {
         initListeners()
     }
 
+    override fun onStart() {
+        super.onStart()
+        NewPointsDialogFragment().also { it.show(this.supportFragmentManager, it.tag) }
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-                val bottomNavDrawerFragment = BottomNavigationDrawerFragment()
-                bottomNavDrawerFragment.show(supportFragmentManager, bottomNavDrawerFragment.tag)
+                BottomNavigationDrawerFragment().also { it.show(supportFragmentManager, it.tag) }
                 true
             }
             else -> super.onOptionsItemSelected(item)

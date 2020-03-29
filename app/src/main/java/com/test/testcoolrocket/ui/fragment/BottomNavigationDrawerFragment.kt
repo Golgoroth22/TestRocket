@@ -23,10 +23,7 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
             when (menuItem.itemId) {
                 R.id.drawer_enter_new_points -> {
                     NewPointsDialogFragment().also {
-                        it.show(
-                            activity!!.supportFragmentManager,
-                            "missiles"
-                        )
+                        it.show(activity!!.supportFragmentManager, it.tag)
                     }
                     this.dismiss()
                 }
